@@ -1,0 +1,41 @@
+//Normal way of initializing the stuffs
+
+
+	sap.ui.getCore().attachInit(function () {
+				sap.ui.require([
+					"qldh/InboxDetail/localservice/mockserver",
+					"sap/m/Shell",
+					"sap/ui/core/ComponentContainer"
+				], function (mockserver, Shell, ComponentContainer) {
+					mockserver.init();
+
+					new Shell({
+					app: new sap.ui.core.ComponentContainer({
+						height : "100%",
+						name : "qldh.InboxDetail"
+					})
+					}).placeAt("content");
+				});
+
+			});
+      
+     // To run the app in sandbox env
+     
+     <script src="../test-resources/sap/ushell/bootstrap/sandbox.js" id="sap-ushell-bootstrap"></script>
+
+		<!-- Bootstrap the UI5 core library -->
+		<script id="sap-ui-bootstrap"
+				src="https://sapui5.hana.ondemand.com/1.44.17/resources/sap-ui-core.js"
+				data-sap-ui-libs="sap.ushell, sap.collaboration, sap.m, sap.ui.layout"
+				data-sap-ui-theme="sap_belize"
+				data-sap-ui-compatVersion="edge"
+				data-sap-ui-resourceroots='{"qldh.emfrequest": "./"}'
+				data-sap-ui-frameOptions='allow'> 	// NON-SECURE setting for testing environment
+		</script>
+
+		<script>
+			sap.ui.getCore().attachInit(function() {
+				// initialize the ushell sandbox component
+				sap.ushell.Container.createRenderer().placeAt("content");
+			});
+		</script>
